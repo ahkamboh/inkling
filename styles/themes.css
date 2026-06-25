@@ -1,0 +1,23 @@
+/* ============================================================
+   inkling design system — THEME TOKENS
+   Call a theme by setting  data-theme="<key>"  on any container.
+   Keys: ink · flat · blueprint · chalk · riso · neon · grid · marker · pastel
+   Every scene/character reads these vars, so one attribute reskins everything.
+   ------------------------------------------------------------
+   --bg    page / card background     --ink   main line + outline colour
+   --fill  body fill ("none"=outline) --eye   eye-dot colour
+   --bw    base stroke width          --a1    accent 1 (flow / path / arrows)
+   --a2    accent 2 (warning)         --a3    accent 3 (note / system state)
+   --block held-square / highlight    --grid  graph-paper line ("transparent"=none)
+   --label caption text colour
+   ============================================================ */
+
+:root,[data-theme="ink"]{ --bg:#ffffff; --ink:#1c1c1c; --fill:#1c1c1c; --eye:#ffffff; --bw:2.6; --a1:#e8730c; --a2:#d6342a; --a3:#2563b0; --block:#ffffff; --grid:transparent; --label:#7a7164; }
+[data-theme="flat"]{ --bg:#f3efe6; --ink:#1c1c1c; --fill:#33312e; --eye:#ffffff; --bw:3.4; --a1:#e8730c; --a2:#d6342a; --a3:#2f6fb0; --block:#f4c430; --grid:transparent; --label:#4a463f; }
+[data-theme="blueprint"]{ --bg:#112a4c; --ink:#8fd2ff; --fill:none; --eye:#8fd2ff; --bw:2.4; --a1:#ffd27f; --a2:#ff9d9d; --a3:#bfe2ff; --block:none; --grid:#23477a; --label:#bfe2ff; }
+[data-theme="chalk"]{ --bg:#243b33; --ink:#f1ece1; --fill:none; --eye:#f1ece1; --bw:2.6; --a1:#f0d79a; --a2:#e7a0b6; --a3:#a9c7f0; --block:none; --grid:transparent; --label:#ece7da; }
+[data-theme="riso"]{ --bg:#f3ead7; --ink:#2f4fd0; --fill:#2f4fd0; --eye:#f3ead7; --bw:2.6; --a1:#ff6f61; --a2:#ff6f61; --a3:#2f4fd0; --block:#ff6f61; --grid:transparent; --label:#9a6a55; }
+[data-theme="neon"]{ --bg:#161823; --ink:#3fe0d0; --fill:none; --eye:#3fe0d0; --bw:2.4; --a1:#ff5ad8; --a2:#ff5ad8; --a3:#3fe0d0; --block:none; --grid:transparent; --label:#9fe7dd; }
+[data-theme="grid"]{ --bg:#fcfdff; --ink:#1c1c1c; --fill:#1c1c1c; --eye:#ffffff; --bw:2.6; --a1:#e8730c; --a2:#d6342a; --a3:#2563b0; --block:#ffffff; --grid:#d3def3; --label:#7a7164; }
+[data-theme="marker"]{ --bg:#ffffff; --ink:#1c1c1c; --fill:#1c1c1c; --eye:#ffffff; --bw:3.4; --a1:#e8730c; --a2:#d6342a; --a3:#2563b0; --block:#ffe14d; --grid:transparent; --label:#7a7164; }
+[data-theme="pastel"]{ --bg:#fff6f1; --ink:#4a4a52; --fill:#4a4a52; --eye:#ffffff; --bw:2.6; --a1:#f0a35e; --a2:#f5a8c0; --a3:#a9c7f0; --block:#f5a8c0; --grid:transparent; --label:#b07f93; }

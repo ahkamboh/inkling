@@ -1,0 +1,43 @@
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#fff}
+.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:auto}
+.gst,.gey,.caf,.ad,.l1,.l2,.l3,.zz{transform-box:fill-box}
+.gst{transform-origin:center bottom;animation:bob 1.4s infinite ease-in-out}
+.gey{transform-origin:center;animation:awake 3.2s infinite ease-in-out}
+.caf{transform-origin:center;animation:wig 1.3s infinite ease-in-out}
+.ad{animation:trav 6s infinite ease-in-out}
+.zz{transform-origin:center;animation:zz 6s infinite ease-in-out}
+.l1{animation:fin .6s .3s ease-out both}.l2{animation:fin .6s .9s ease-out both}.l3{animation:fin .6s 1.5s ease-out both}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes awake{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.12)}97%{transform:scaleY(1)}}
+@keyframes wig{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes trav{0%{transform:translate(0,0);opacity:0}7%{opacity:1}36%{transform:translate(196px,92px)}43%{transform:translate(176px,84px)}51%{transform:translate(196px,92px)}58%{transform:translate(174px,82px)}90%{transform:translate(0,0);opacity:1}96%{opacity:0}100%{transform:translate(0,0);opacity:0}}
+@keyframes zz{0%,55%{opacity:0;transform:translateY(0)}62%{opacity:.9;transform:translateY(-6px)}74%{opacity:0;transform:translateY(-12px)}100%{opacity:0}}
+@keyframes fin{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="680" height="383" fill="#161823"/>
+<g fill="none" class="gst">
+<path d="M150,172 C118,172 108,216 108,248 L108,278 Q119,266 130,278 Q141,290 152,278 Q163,266 174,278 L174,248 C174,216 164,172 150,172 Z" stroke="#3fe0d0" stroke-width="6" opacity="0.2"/>
+<path d="M150,172 C118,172 108,216 108,248 L108,278 Q119,266 130,278 Q141,290 152,278 Q163,266 174,278 L174,248 C174,216 164,172 150,172 Z" stroke="#3fe0d0" stroke-width="2.6"/>
+<path d="M172,226 C188,220 200,219 210,224" stroke="#3fe0d0" stroke-width="2.6" stroke-linecap="round"/>
+<g class="gey"><circle cx="132" cy="222" r="6.5" fill="#3fe0d0" stroke="none"/><circle cx="152" cy="222" r="6.5" fill="#3fe0d0" stroke="none"/></g>
+</g>
+<g class="zz" fill="none" stroke="#3fe0d0" stroke-width="1.8"><path d="M120,140 L132,140 L120,152 L132,152 M134,128 L143,128 L134,137 L143,137"/></g>
+<g fill="none">
+<path d="M470,166 L566,166 Q578,166 578,178 L578,262 Q578,274 566,274 L470,274 L470,252 Q448,242 448,220 Q448,198 470,188 Z" stroke="#3fe0d0" stroke-width="5" opacity="0.18"/>
+<path d="M470,166 L566,166 Q578,166 578,178 L578,262 Q578,274 566,274 L470,274 L470,252 Q448,242 448,220 Q448,198 470,188 Z" stroke="#3fe0d0" stroke-width="2.6"/>
+<g class="caf">
+<circle cx="448" cy="208" r="8" fill="#22141f" stroke="#ff5ad8" stroke-width="2.4"/><circle cx="462" cy="222" r="8" fill="#22141f" stroke="#ff5ad8" stroke-width="2.4"/><circle cx="446" cy="234" r="7" fill="#22141f" stroke="#ff5ad8" stroke-width="2.4"/>
+<path d="M454,214 L456,228 M450,228 L456,226" stroke="#ff5ad8" stroke-width="1.6"/>
+</g>
+</g>
+<g class="ad" fill="none">
+<circle cx="214" cy="112" r="8" fill="#10242a" stroke="#3fe0d0" stroke-width="2.4"/><circle cx="228" cy="126" r="8" fill="#10242a" stroke="#3fe0d0" stroke-width="2.4"/><circle cx="212" cy="138" r="7" fill="#10242a" stroke="#3fe0d0" stroke-width="2.4"/>
+<path d="M220,118 L222,132 M216,132 L222,130" stroke="#3fe0d0" stroke-width="1.6"/>
+</g>
+<text class="l1" x="206" y="92" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="16" fill="#3fe0d0">adenosine = sleepy</text>
+<text class="l2" x="514" y="140" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="16" fill="#ff5ad8">caffeine jams the slot</text>
+<text class="l3" x="150" y="332" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="17" fill="#3fe0d0">→ still wide awake</text>
+</svg></div></body></html>
