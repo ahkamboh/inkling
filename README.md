@@ -50,6 +50,9 @@ The **same 10-scene reel**, rendered in three different themes just by changing 
 bash build-reel.sh neon      # render the reel in any theme you name
 ```
 
+> **Transitions are native & declarative** — each scene picks its own out-transition with one tag:
+> `<meta name="inkling:transition" content="reveal">` (friendly names: `push` · `glide` · `rise` · `wipe` · `reveal` · `burst` · `dissolve` · `diagonal` · `fade`). The agent chooses by *what happens at the cut* — see the rubric in [SKILL.md](SKILL.md).
+
 > Also in the box — two concept micro-explainers (`scenes/scene1–2.html`): **caffeine blocks your sleepy signal** and **tiny habits compound** → [`examples/demo.mp4`](examples/demo.mp4). Preview every shape × theme in [`styles/gallery.html`](styles/gallery.html).
 
 ---
