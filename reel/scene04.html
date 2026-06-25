@@ -1,0 +1,37 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.bl{fill:var(--block);stroke:var(--ink);stroke-width:calc(var(--bw) - .6)}
+.ms,.eyg,.tap,.k1,.k2,.k3,.k4,.lbl{transform-box:fill-box}
+.ms{transform-origin:center bottom;animation:br 2.8s infinite ease-in-out}
+.eyg{transform-origin:center;animation:bk 2.8s infinite ease-in-out}
+.tap{transform-origin:left top;animation:tap 1.1s infinite ease-in-out}
+.k1{animation:pp .45s .5s cubic-bezier(.3,1.6,.5,1) both}
+.k2{animation:pp .45s 1.0s cubic-bezier(.3,1.6,.5,1) both}
+.k3{animation:pp .45s 1.5s cubic-bezier(.3,1.6,.5,1) both}
+.k4{animation:pp .45s 2.0s cubic-bezier(.3,1.6,.5,1) both}
+.k1,.k2,.k3,.k4{transform-origin:center bottom}
+.lbl{animation:fin .5s .3s ease-out both}
+@keyframes br{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.02)}}
+@keyframes bk{0%,80%,100%{transform:scaleY(1)}85%{transform:scaleY(.1)}90%{transform:scaleY(1)}}
+@keyframes tap{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
+@keyframes pp{0%{opacity:0;transform:translateY(-16px) scale(.6)}70%{opacity:1;transform:translateY(2px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fin{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<g transform="translate(40,0)"><g class="ms">
+<path class="bd" d="M140,202 C113,202 106,244 109,272 C110,288 124,296 140,296 C156,296 170,288 171,272 C174,244 167,202 140,202 Z"/>
+<g class="eyg"><circle class="ey" cx="131" cy="242" r="5"/><circle class="ey" cx="149" cy="242" r="5"/></g>
+<path class="lg" d="M133,295 L131,310 M147,295 L149,310 M125,310 L139,310 M143,310 L157,310"/>
+<path class="am" d="M114,252 C104,256 99,264 100,274"/>
+<path class="tap am" d="M168,250 C188,244 206,245 220,252"/>
+</g></g>
+<rect class="bl k1" x="372" y="278" width="56" height="22" rx="3"/>
+<rect class="bl k2" x="372" y="254" width="56" height="22" rx="3"/>
+<rect class="bl k3" x="372" y="230" width="56" height="22" rx="3"/>
+<rect class="bl k4" x="372" y="206" width="56" height="22" rx="3"/>
+<text class="lbl" x="340" y="350" text-anchor="middle" font-size="30" fill="var(--label)">stack it up</text>
+</svg></div></body></html>

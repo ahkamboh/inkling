@@ -33,16 +33,24 @@ structure: establish → arrive → notice → wind-up → act → recover → l
 
 ---
 
-## 🎬 Demo
+## 🎬 Demo — one reel, three themes
 
-Two micro-explainers, generated entirely from code (`scenes/scene1–2.html`):
+The **same 10-scene reel**, rendered in three different themes just by changing `data-theme` — with premium cinematic transitions (slide · circle-open · wipe · radial) between every scene. This *is* the pitch: **author once, ship any look.**
 
-![inkling demo](examples/demo.gif)
+**`ink`**
+<img src="examples/reel-ink.gif" width="100%" alt="inkling reel — ink theme">
 
-> 1. **Caffeine blocks your sleepy signal** *(neon · ghost)* — caffeine jams the receptor, so the adenosine "sleepy" molecule keeps bouncing off.
-> 2. **Tiny habits compound** *(notebook · square)* — one small block a day stacks into a tower as the compound curve climbs.
->
-> Full-quality MP4: [`examples/demo.mp4`](examples/demo.mp4) · preview every shape × theme in [`styles/gallery.html`](styles/gallery.html)
+**`neon`**
+<img src="examples/reel-neon.gif" width="100%" alt="inkling reel — neon theme">
+
+**`chalk`**
+<img src="examples/reel-chalk.gif" width="100%" alt="inkling reel — chalkboard theme">
+
+```bash
+bash build-reel.sh neon      # render the reel in any theme you name
+```
+
+> Also in the box — two concept micro-explainers (`scenes/scene1–2.html`): **caffeine blocks your sleepy signal** and **tiny habits compound** → [`examples/demo.mp4`](examples/demo.mp4). Preview every shape × theme in [`styles/gallery.html`](styles/gallery.html).
 
 ---
 
