@@ -1,0 +1,38 @@
+<html><head><meta charset="utf-8"><meta name="inkling:transition" content="glide"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.stone{fill:var(--bg);stroke:var(--ink);stroke-width:2.2}
+.walk,.eyg,.p1,.p2,.p3,.p4,.up,.lbl{transform-box:fill-box}
+.walk{transform-origin:center bottom;animation:walk 2.8s ease-in-out both}
+.eyg{transform-origin:center;animation:bk 2.8s infinite ease-in-out}
+.p1{transform-origin:center bottom;animation:rs .5s .3s cubic-bezier(.3,1.5,.5,1) both}
+.p2{transform-origin:center bottom;animation:rs .5s .8s cubic-bezier(.3,1.5,.5,1) both}
+.p3{transform-origin:center bottom;animation:rs .5s 1.3s cubic-bezier(.3,1.5,.5,1) both}
+.p4{transform-origin:center bottom;animation:rs .5s 1.8s cubic-bezier(.3,1.5,.5,1) both}
+.up{animation:draw 2.4s .4s ease-out both}
+.lbl{animation:fin .5s 1.9s ease-out both}
+@keyframes bk{0%,80%,100%{transform:scaleY(1)}85%{transform:scaleY(.1)}90%{transform:scaleY(1)}}
+@keyframes walk{0%,10%{transform:translate(0,0)}24%{transform:translate(90px,-14px)}36%{transform:translate(150px,0)}52%{transform:translate(240px,-14px)}64%{transform:translate(300px,0)}100%{transform:translate(300px,0)}}
+@keyframes rs{0%{opacity:0;transform:translateY(22px) scale(.7)}70%{opacity:1;transform:translateY(-3px) scale(1.03)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes draw{0%{stroke-dashoffset:320;opacity:0}12%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes fin{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<g font-family="'Bradley Hand',cursive">
+<g class="p1"><rect class="stone" x="150" y="320" width="86" height="30" rx="5"/><path d="M182,335 L189,343 L203,326" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="p2"><rect class="stone" x="250" y="320" width="86" height="30" rx="5"/><path d="M282,335 L289,343 L303,326" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="p3"><rect class="stone" x="350" y="320" width="86" height="30" rx="5"/><path d="M382,335 L389,343 L403,326" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="p4"><rect class="stone" x="450" y="320" width="86" height="30" rx="5"/><path d="M482,335 L489,343 L503,326" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g>
+<path class="up" d="M170,288 L520,288" fill="none" stroke="var(--a1)" stroke-width="3" stroke-linecap="round" stroke-dasharray="320"/>
+<path class="up" d="M512,282 L522,288 L512,294" fill="none" stroke="var(--a1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g class="walk"><g class="bdwrap" transform="translate(35,0)">
+<path class="bd" d="M140,206 C115,206 109,246 112,272 C113,288 126,296 140,296 C154,296 167,288 168,272 C171,246 165,206 140,206 Z"/>
+<g class="eyg"><circle class="ey" cx="133" cy="244" r="5"/><circle class="ey" cx="147" cy="244" r="5"/></g>
+<path class="lg" d="M133,295 L131,308 M147,295 L149,308"/>
+</g></g>
+<text class="lbl" x="340" y="120" text-anchor="middle" font-size="28" fill="var(--label)">…one at a time</text>
+</svg></div></body></html>

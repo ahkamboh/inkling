@@ -1,0 +1,32 @@
+<html><head><meta charset="utf-8"><meta name="inkling:transition" content="push"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.bot{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ms,.eyg,.thumb,.chk,.lbl{transform-box:fill-box}
+.ms{transform-origin:center bottom;animation:br 2.8s infinite ease-in-out}
+.eyg{transform-origin:center;animation:bk 2.8s infinite ease-in-out}
+.thumb{transform-origin:left bottom;animation:thumb 1.4s infinite ease-in-out}
+.chk{transform-origin:center;animation:chk 2.8s ease-in-out both}
+.lbl{animation:fin .5s .4s ease-out both}
+@keyframes br{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.02)}}
+@keyframes bk{0%,80%,100%{transform:scaleY(1)}85%{transform:scaleY(.1)}90%{transform:scaleY(1)}}
+@keyframes thumb{0%,100%{transform:rotate(0)}50%{transform:rotate(-8deg) translateY(-3px)}}
+@keyframes chk{0%,28%{opacity:0;transform:scale(.2)}42%{opacity:1;transform:scale(1.25)}52%{transform:scale(.95)}62%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+@keyframes fin{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<g class="bot" transform="translate(150,0)"><rect x="300" y="170" width="84" height="74" rx="10" fill="var(--bg)"/><path d="M342,170 L342,152"/><circle cx="342" cy="146" r="5" fill="var(--ink)" stroke="none"/><circle cx="322" cy="200" r="6"/><circle cx="362" cy="200" r="6"/><path d="M324,224 C332,232 352,232 360,224"/><path d="M300,188 L288,188 M384,188 L396,188"/></g>
+<g transform="translate(40,0)"><g class="ms">
+<path class="bd" d="M140,202 C113,202 106,244 109,272 C110,288 124,296 140,296 C156,296 170,288 171,272 C174,244 167,202 140,202 Z"/>
+<g class="eyg"><circle class="ey" cx="131" cy="242" r="5"/><circle class="ey" cx="149" cy="242" r="5"/></g>
+<path class="lg" d="M133,295 L131,310 M147,295 L149,310 M125,310 L139,310 M143,310 L157,310"/>
+<path class="am" d="M114,252 C104,256 99,264 100,274"/>
+<path class="thumb am" d="M168,250 C180,244 190,238 196,228"/>
+</g></g>
+<g class="chk"><circle cx="492" cy="150" r="20" fill="none" stroke="var(--ink)" stroke-width="4"/><path d="M482,150 L489,158 L504,138" fill="none" stroke="var(--a3)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text class="lbl" x="492" y="206" text-anchor="middle" font-size="24" fill="var(--a3)">AI works fine</text>
+<text class="lbl" x="340" y="356" text-anchor="middle" font-size="28" fill="var(--label)">the hard part isn’t the AI…</text>
+</svg></div></body></html>

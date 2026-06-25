@@ -11,6 +11,7 @@ const FPS = 24;
 const DUR = 2800; // ms per scene
 const W = 1920;
 const THEME = process.argv[2] || 'ink';
+const SET = process.argv[3] || 'reel'; // scene-set folder (reel | story | ...)
 
 // friendly transition names -> ffmpeg xfade types
 const ALIAS = {
@@ -26,12 +27,12 @@ const ALIAS = {
 const norm = (s) => { s = (s || '').trim().toLowerCase(); return ALIAS[s] || s; };
 
 (async () => {
-  const dir = path.resolve(__dirname, 'reel');
+  const dir = path.resolve(__dirname, SET);
   const scenes = fs.readdirSync(dir).filter(f => /^scene\d+\.html$/.test(f)).sort();
   const b = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--force-color-profile=srgb'] });
   const p = await b.newPage();
   await p.setViewport({ width: W, height: 1200, deviceScaleFactor: 1 });
-  const themeDir = path.resolve(__dirname, 'frames', 'reel', THEME);
+  const themeDir = path.resolve(__dirname, 'frames', SET, THEME);
   const transitions = [];
   for (const f of scenes) {
     const n = f.match(/\d+/)[0];
