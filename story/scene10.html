@@ -1,0 +1,34 @@
+<html><head><meta charset="utf-8"><meta name="inkling:transition" content="fade"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.ms,.eyg,.glow,.star,.rays,.lbl{transform-box:fill-box}
+.ms{transform-origin:center bottom;animation:hop 2.8s ease-in-out both}
+.eyg{transform-origin:center;animation:bk 2.8s infinite ease-in-out}
+.glow{transform-origin:center;animation:glow 1.8s infinite ease-in-out}
+.star{transform-origin:center;animation:star 2.8s ease-in-out both}
+.rays{transform-origin:center;animation:ry 2.8s ease-in-out both}
+.lbl{animation:fin .5s 1.3s ease-out both}
+@keyframes hop{0%,40%{transform:translate(0,0)}55%{transform:translate(48px,-22px)}70%{transform:translate(96px,0)}100%{transform:translate(96px,0)}}
+@keyframes bk{0%,80%,100%{transform:scaleY(1)}85%{transform:scaleY(.1)}90%{transform:scaleY(1)}}
+@keyframes glow{0%{opacity:.3;transform:scale(.92)}50%{opacity:.85;transform:scale(1.08)}100%{opacity:.3;transform:scale(.92)}}
+@keyframes star{0%,55%{opacity:0;transform:scale(.2) rotate(-20deg)}72%{opacity:1;transform:scale(1.2) rotate(6deg)}84%{transform:scale(.95) rotate(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes ry{0%,60%{opacity:0;transform:scale(.5)}78%{opacity:.85;transform:scale(1.15)}100%{opacity:.5;transform:scale(1)}}
+@keyframes fin{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<g class="glow" fill="none" stroke="var(--a1)" stroke-width="3" stroke-linecap="round"><path d="M500,168 L500,148 M540,182 L556,170 M460,182 L444,170 M556,214 L574,208 M444,214 L426,208"/></g>
+<g fill="var(--bg)" stroke="var(--ink)" stroke-width="2.6"><path d="M468,300 L468,224 C468,196 532,196 532,224 L532,300 Z"/><circle cx="522" cy="262" r="3.5" fill="var(--ink)" stroke="none"/></g>
+<g class="rays" fill="none" stroke="var(--a1)" stroke-width="3" stroke-linecap="round"><path d="M338,112 L338,92 M380,128 L396,114 M296,128 L280,114"/></g>
+<path class="star" d="M338,104 L347,128 L373,128 L352,144 L360,170 L338,154 L316,170 L324,144 L303,128 L329,128 Z" fill="var(--a1)" stroke="var(--ink)" stroke-width="2.6" stroke-linejoin="round"/>
+<g transform="translate(80,0)"><g class="ms">
+<path class="bd" d="M140,206 C115,206 109,246 112,272 C113,288 126,296 140,296 C154,296 167,288 168,272 C171,246 165,206 140,206 Z"/>
+<g class="eyg"><circle class="ey" cx="133" cy="244" r="5"/><circle class="ey" cx="147" cy="244" r="5"/></g>
+<path class="lg" d="M133,295 L131,310 M147,295 L149,310 M125,310 L139,310 M143,310 L157,310"/>
+<path class="am" d="M114,250 C104,244 99,236 100,226"/><path class="am" d="M168,250 C178,244 183,236 182,226"/>
+</g></g>
+<text class="lbl" x="500" y="338" text-anchor="middle" font-size="24" fill="var(--a1)">trust, earned</text>
+<text class="lbl" x="300" y="356" text-anchor="middle" font-size="28" fill="var(--label)">one proven result at a time</text>
+</svg></div></body></html>

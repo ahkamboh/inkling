@@ -1,0 +1,33 @@
+<html><head><meta charset="utf-8"><meta name="inkling:transition" content="dissolve"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.cliff{fill:none;stroke:var(--ink);stroke-width:2.4}
+.ms,.eyg,.lean,.arc,.gaplbl{transform-box:fill-box}
+.eyg{transform-origin:center;animation:bk 3s infinite ease-in-out}
+.lean{transform-origin:right bottom;animation:lean 3s infinite ease-in-out}
+.arc{animation:arc 3s infinite ease-in-out}
+.gaplbl{transform-origin:center;animation:gp 1.6s infinite ease-in-out}
+@keyframes bk{0%,80%,100%{transform:scaleY(1)}85%{transform:scaleY(.1)}90%{transform:scaleY(1)}}
+@keyframes lean{0%{transform:rotate(0)}45%{transform:rotate(8deg)}70%{transform:rotate(6deg)}100%{transform:rotate(0)}}
+@keyframes arc{0%{stroke-dashoffset:300;opacity:.2}40%{stroke-dashoffset:128;opacity:1}60%{stroke-dashoffset:104;opacity:1}76%{stroke-dashoffset:128;opacity:.25}100%{stroke-dashoffset:300;opacity:.2}}
+@keyframes gp{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<path class="cliff" d="M0,300 L210,300 M210,300 L200,330 M210,300 L210,383"/>
+<path d="M0,300 L210,300 L210,383 L0,383 Z" fill="var(--bg)"/>
+<path class="cliff" d="M470,300 L680,300 M470,300 L470,383"/>
+<path d="M470,300 L680,300 L680,383 L470,383 Z" fill="var(--bg)"/>
+<g class="lean"><g>
+<path class="bd" d="M126,206 C101,206 95,246 98,272 C99,288 113,296 126,296 C139,296 153,288 154,272 C157,246 151,206 126,206 Z"/>
+<g class="eyg"><circle class="ey" cx="119" cy="244" r="5"/><circle class="ey" cx="135" cy="244" r="5"/></g>
+<path class="lg" d="M119,295 L117,300 M134,295 L136,300"/>
+<path class="am" d="M152,250 C166,248 178,250 190,256"/>
+<rect class="bd" x="184" y="246" width="34" height="22" rx="2" fill="var(--bg)"/><path d="M184,247 L201,258 L218,247" fill="none" stroke="var(--ink)" stroke-width="1.6"/>
+</g></g>
+<text x="190" y="206" text-anchor="middle" font-size="22" fill="var(--a2)">real task</text>
+<path class="arc" d="M214,250 C290,196 392,196 466,256" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round" stroke-dasharray="300"/>
+<g class="gaplbl"><text x="340" y="356" text-anchor="middle" font-size="28" fill="var(--a2)">…it’s trusting it</text></g>
+</svg></div></body></html>

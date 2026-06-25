@@ -33,9 +33,19 @@ structure: establish → arrive → notice → wind-up → act → recover → l
 
 ---
 
-## 🎬 Demo — one reel, three themes
+## 🎬 Demo
 
-The **same 10-scene reel**, rendered in three different themes just by changing `data-theme` — with premium cinematic transitions (slide · circle-open · wipe · radial) between every scene. This *is* the pitch: **author once, ship any look.**
+**A real explainer — "can you trust an AI agent?"** Ten beats authored from one paragraph (`story/scene01–10.html`), in `ink` + `bean`, each scene declaring its own transition:
+
+<img src="examples/story-ink.gif" width="100%" alt="inkling — an AI-agent trust explainer">
+
+> *"AI agents are changing how we work… the hard part isn't the AI — it's trusting it with real tasks. Trust gets built one small proven result at a time."*
+>
+> Render the same story in any theme: `bash build-reel.sh chalk story`
+
+### One reel, three themes
+
+The **same 10-scene showreel**, rendered in three different themes just by changing `data-theme` — with premium cinematic transitions (slide · circle-open · wipe · radial) between every scene. This *is* the pitch: **author once, ship any look.**
 
 **`ink`**
 <img src="examples/reel-ink.gif" width="100%" alt="inkling reel — ink theme">
