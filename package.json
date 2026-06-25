@@ -1,0 +1,15 @@
+{
+  "name": "inkling",
+  "version": "1.0.0",
+  "description": "Code-driven hand-drawn animated explainer videos with a themeable mascot — no AI image or video model.",
+  "scripts": {
+    "render": "node render.js",
+    "build": "bash build.sh"
+  },
+  "keywords": ["explainer", "animation", "svg", "hand-drawn", "video", "ffmpeg", "puppeteer", "motion-graphics"],
+  "author": "Ali Hamza Kamboh (@ahkamboh)",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^25.0.0"
+  }
+}

@@ -1,0 +1,49 @@
+<html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#fff}
+.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:auto}
+.sq,.eyes,.arm,.b1,.b2,.b3,.b4,.b5,.b6,.cur,.l1,.l2,.l3{transform-box:fill-box}
+.sq{transform-origin:center bottom;animation:br 2.8s infinite ease-in-out}
+.eyes{transform-origin:center;animation:bl 3.6s infinite ease-in-out}
+.arm{transform-origin:left top;animation:tap 1.3s infinite ease-in-out}
+.b1{animation:pop .5s .9s cubic-bezier(.3,1.5,.5,1) both}
+.b2{animation:pop .5s 1.5s cubic-bezier(.3,1.5,.5,1) both}
+.b3{animation:pop .5s 2.1s cubic-bezier(.3,1.5,.5,1) both}
+.b4{animation:pop .5s 2.7s cubic-bezier(.3,1.5,.5,1) both}
+.b5{animation:pop .5s 3.3s cubic-bezier(.3,1.5,.5,1) both}
+.b6{animation:pop .5s 3.9s cubic-bezier(.3,1.5,.5,1) both}
+.b1,.b2,.b3,.b4,.b5,.b6{transform-origin:center bottom}
+.cur{animation:draw 3.4s 1s ease-in-out both}
+.l1{animation:fin .5s .5s ease-out both}.l2{animation:fin .5s 2.4s ease-out both}.l3{animation:fin .5s 3.9s ease-out both}
+@keyframes br{0%{transform:scaleY(1)}50%{transform:scaleY(1.02)}100%{transform:scaleY(1)}}
+@keyframes bl{0%,88%,100%{transform:scaleY(1)}92%{transform:scaleY(.1)}95%{transform:scaleY(1)}}
+@keyframes tap{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
+@keyframes pop{0%{opacity:0;transform:translateY(-14px) scale(.6)}70%{opacity:1;transform:translateY(2px) scale(1.04)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes draw{0%{stroke-dashoffset:560}100%{stroke-dashoffset:0}}
+@keyframes fin{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383" xmlns="http://www.w3.org/2000/svg">
+<defs><pattern id="gp" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22,0 L0,0 L0,22" fill="none" stroke="#d3def3" stroke-width="1"/></pattern>
+<marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8730c"/></marker></defs>
+<rect x="0" y="0" width="680" height="383" fill="#fcfdff"/>
+<rect x="0" y="0" width="680" height="383" fill="url(#gp)"/>
+<path d="M40,316 L300,316" stroke="#1c1c1c" stroke-width="2" fill="none" opacity="0.5"/>
+<g stroke="#1c1c1c" stroke-width="1.8" fill="#ffffff">
+<rect class="b1" x="276" y="298" width="54" height="18" rx="2"/>
+<rect class="b2" x="276" y="278" width="54" height="18" rx="2"/>
+<rect class="b3" x="276" y="258" width="54" height="18" rx="2"/>
+<rect class="b4" x="276" y="238" width="54" height="18" rx="2"/>
+<rect class="b5" x="276" y="218" width="54" height="18" rx="2"/>
+<rect class="b6" x="276" y="198" width="54" height="18" rx="2"/>
+</g>
+<g class="sq">
+<rect x="70" y="256" width="56" height="58" rx="13" fill="#1c1c1c"/>
+<g class="eyes"><circle cx="86" cy="282" r="4" fill="#fff"/><circle cx="104" cy="282" r="4" fill="#fff"/><circle cx="86" cy="283" r="1.3" fill="#1c1c1c"/><circle cx="104" cy="283" r="1.3" fill="#1c1c1c"/></g>
+<path d="M82,313 L80,326 M110,313 L112,326 M74,326 L86,326 M106,326 L118,326" fill="none" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+</g>
+<path class="arm" d="M126,274 C146,268 164,269 178,276" fill="none" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+<path class="cur" d="M150,312 C250,306 350,296 426,244 C500,194 542,162 566,144" fill="none" stroke="#e8730c" stroke-width="3" stroke-linecap="round" stroke-dasharray="560" marker-end="url(#ao)"/>
+<text class="l1" x="150" y="244" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="16" fill="#e8730c">+1% a day</text>
+<text class="l2" x="396" y="226" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="15" fill="#2563b0">every day…</text>
+<text class="l3" x="560" y="128" text-anchor="middle" font-family="'Bradley Hand','Comic Sans MS',cursive" font-size="18" fill="#d6342a">compounds!</text>
+</svg></div></body></html>

@@ -1,0 +1,7 @@
+node_modules/
+frames/
+out/
+styles/gallery.png
+styles/gallery_view.png
+*.log
+.DS_Store

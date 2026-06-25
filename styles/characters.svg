@@ -1,0 +1,24 @@
+<!-- inkling CHARACTER LIBRARY — 8 body shapes, one identity.
+     Inline these <symbol>s into a page, then call a shape with:
+        <svg viewBox="0 0 100 130"><use href="#c-ghost"/></svg>
+     Colours come from themes.css vars (set data-theme on an ancestor).
+     Shape keys: bean · round · square · tall · triangle · pill · cloud · ghost -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<style>
+.body{fill:var(--fill,#1c1c1c);stroke:var(--ink,#1c1c1c);stroke-width:var(--bw,2.6);stroke-linejoin:round}
+.eye{fill:var(--eye,#fff)}
+.limb{fill:none;stroke:var(--ink,#1c1c1c);stroke-width:var(--bw,2.6);stroke-linecap:round}
+.block{fill:var(--block,#fff);stroke:var(--ink,#1c1c1c);stroke-width:calc(var(--bw,2.6) - .7)}
+</style>
+<defs>
+<g id="arm-block"><path class="limb" d="M60,66 C67,58 71,50 73,42"/><rect class="block" x="64" y="24" width="16" height="16" rx="2" transform="rotate(-6 72 32)"/></g>
+<symbol id="c-bean" viewBox="0 0 100 130"><path class="body" d="M42,46 C24,46 19,70 22,90 C23,102 31,108 42,108 C53,108 61,102 62,90 C65,70 60,46 42,46 Z"/><path class="limb" d="M38,107 L36,120 M48,107 L50,120 M30,120 L42,120 M46,120 L58,120"/><use href="#arm-block"/><circle class="eye" cx="35" cy="72" r="4"/><circle class="eye" cx="49" cy="72" r="4"/></symbol>
+<symbol id="c-round" viewBox="0 0 100 130"><circle class="body" cx="42" cy="76" r="30"/><path class="limb" d="M37,104 L35,118 M48,104 L50,118 M29,118 L41,118 M46,118 L58,118"/><use href="#arm-block"/><circle class="eye" cx="35" cy="74" r="4"/><circle class="eye" cx="49" cy="74" r="4"/></symbol>
+<symbol id="c-square" viewBox="0 0 100 130"><rect class="body" x="14" y="48" width="56" height="60" rx="13"/><path class="limb" d="M30,107 L28,120 M54,107 L56,120 M22,120 L34,120 M50,120 L62,120"/><use href="#arm-block"/><circle class="eye" cx="34" cy="74" r="4"/><circle class="eye" cx="50" cy="74" r="4"/></symbol>
+<symbol id="c-tall" viewBox="0 0 100 130"><rect class="body" x="22" y="40" width="40" height="68" rx="15"/><path class="limb" d="M34,107 L32,120 M50,107 L52,120 M26,120 L38,120 M48,120 L60,120"/><use href="#arm-block"/><circle class="eye" cx="35" cy="66" r="4"/><circle class="eye" cx="49" cy="66" r="4"/></symbol>
+<symbol id="c-triangle" viewBox="0 0 100 130"><path class="body" d="M42,42 L72,104 Q75,110 68,110 L16,110 Q9,110 12,104 Z"/><path class="limb" d="M36,109 L34,122 M48,109 L50,122 M28,122 L40,122 M46,122 L58,122"/><use href="#arm-block"/><circle class="eye" cx="36" cy="88" r="4"/><circle class="eye" cx="48" cy="88" r="4"/></symbol>
+<symbol id="c-pill" viewBox="0 0 100 130"><rect class="body" x="10" y="60" width="64" height="46" rx="23"/><path class="limb" d="M30,105 L28,118 M54,105 L56,118 M22,118 L34,118 M50,118 L62,118"/><use href="#arm-block"/><circle class="eye" cx="34" cy="82" r="4"/><circle class="eye" cx="50" cy="82" r="4"/></symbol>
+<symbol id="c-cloud" viewBox="0 0 100 130"><path class="body" d="M20,92 C9,92 7,79 17,75 C14,62 31,57 40,64 C47,52 67,55 68,69 C81,69 81,86 70,89 C70,100 50,103 43,94 C32,101 22,100 20,92 Z"/><path class="limb" d="M36,100 L34,114 M50,100 L52,114 M28,114 L40,114 M48,114 L60,114"/><use href="#arm-block"/><circle class="eye" cx="34" cy="80" r="4"/><circle class="eye" cx="48" cy="80" r="4"/></symbol>
+<symbol id="c-ghost" viewBox="0 0 100 130"><path class="body" d="M42,44 C21,44 14,74 14,94 L14,112 Q21,103 28,112 Q35,121 42,112 Q49,103 56,112 Q63,121 70,112 L70,94 C70,74 63,44 42,44 Z"/><use href="#arm-block"/><circle class="eye" cx="35" cy="80" r="4"/><circle class="eye" cx="49" cy="80" r="4"/></symbol>
+</defs>
+</svg>
