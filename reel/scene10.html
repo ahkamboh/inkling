@@ -1,0 +1,29 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles/themes.css"><style>
+html,body{margin:0;background:#fff}.stage{width:1920px}
+svg.sc{display:block;width:1920px;height:1080px}
+.sc text{font-family:'Bradley Hand','Chalkboard SE','Comic Sans MS',cursive}
+.bd{fill:var(--fill);stroke:var(--ink);stroke-width:var(--bw);stroke-linejoin:round}.ey{fill:var(--eye)}
+.lg,.am{fill:none;stroke:var(--ink);stroke-width:var(--bw);stroke-linecap:round}
+.ms,.eyg,.star,.rays,.lbl{transform-box:fill-box}
+.ms{transform-origin:center bottom;animation:br 2.8s infinite ease-in-out}
+.eyg{transform-origin:center;animation:wide 2.8s ease-in-out both}
+.star{transform-origin:center;animation:spark 2.8s ease-in-out both}
+.rays{transform-origin:center;animation:rays 2.8s ease-in-out both}
+.lbl{animation:fin .5s 1.2s ease-out both}
+@keyframes br{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.02)}}
+@keyframes wide{0%,30%{transform:scale(1)}45%{transform:scale(1.25)}70%{transform:scale(1.18)}100%{transform:scale(1.18)}}
+@keyframes spark{0%,28%{opacity:0;transform:scale(.2) rotate(-30deg)}44%{opacity:1;transform:scale(1.2) rotate(6deg)}56%{transform:scale(.95) rotate(0)}66%{transform:scale(1.05)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes rays{0%,34%{opacity:0;transform:scale(.4)}50%{opacity:.9;transform:scale(1.15)}70%{opacity:.5;transform:scale(1)}100%{opacity:.5;transform:scale(1)}}
+@keyframes fin{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+</style></head><body><div class="stage">
+<svg class="sc" viewBox="0 0 680 383"><rect width="680" height="383" fill="var(--bg)"/>
+<g transform="translate(195,30)"><g class="ms">
+<path class="bd" d="M140,202 C113,202 106,244 109,272 C110,288 124,296 140,296 C156,296 170,288 171,272 C174,244 167,202 140,202 Z"/>
+<g class="eyg"><circle class="ey" cx="131" cy="242" r="5"/><circle class="ey" cx="149" cy="242" r="5"/></g>
+<path class="lg" d="M133,295 L131,310 M147,295 L149,310 M125,310 L139,310 M143,310 L157,310"/>
+<path class="am" d="M114,250 C104,246 99,254 100,264"/><path class="am" d="M168,250 C178,246 183,254 182,264"/>
+</g></g>
+<g class="rays" fill="none" stroke="var(--a1)" stroke-width="4" stroke-linecap="round"><path d="M430,96 L430,72 M468,134 L488,118 M392,134 L372,118 M484,168 L508,160 M376,168 L352,160"/></g>
+<path class="star" d="M430,108 L440,140 L474,140 L447,160 L457,192 L430,172 L403,192 L413,160 L386,140 L420,140 Z" fill="var(--a1)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+<text class="lbl" x="430" y="248" text-anchor="middle" font-size="32" fill="var(--label)">ta-da</text>
+</svg></div></body></html>
