@@ -82,24 +82,38 @@ Add a scene = add a `scenes/sceneN.html` and re-run `bash build.sh`. The 7-beat 
 (establish → arrive → notice → wind-up → act → recover → loop) is the template; copy an
 existing scene and swap the props, paths and labels.
 
-## The look — shapes × themes
+## The look — every shape × every theme
 
-A "look" is one **shape** + one **theme**. Switch with a single attribute; everything re-skins.
+![inkling — every shape and theme](examples/styles.gif)
 
-| | keys |
+A "look" is one **shape** + one **theme**. Each is called by a short **key** — name them and everything re-skins:
+
+| | keys (call by name) |
 |---|---|
-| **themes** (`data-theme="…"`) | `ink` · `flat` · `blueprint` · `chalk` · `riso` · `neon` · `grid` · `marker` · `pastel` |
-| **shapes** (`<use href="#c-…">`) | `c-bean` · `c-round` · `c-square` · `c-tall` · `c-triangle` · `c-pill` · `c-cloud` · `c-ghost` |
+| **themes** → `data-theme="…"` | `ink` · `flat` · `blueprint` · `chalk` · `riso` · `neon` · `grid` · `marker` · `pastel` |
+| **shapes** → `<use href="#c-…">` | `c-bean` · `c-round` · `c-square` · `c-tall` · `c-triangle` · `c-pill` · `c-cloud` · `c-ghost` |
+
+**In code** — drop a shape into a theme:
 
 ```html
 <link rel="stylesheet" href="styles/themes.css">
-<div data-theme="neon">
-  <svg viewBox="0 0 100 130"><use href="#c-ghost"/></svg>   <!-- ghost + neon -->
+
+<div data-theme="neon">                                <!-- theme, by name -->
+  <svg viewBox="0 0 100 130"><use href="#c-ghost"/></svg>     <!-- shape, by name -->
 </div>
+<!--  →  a ghost mascot in the neon palette  -->
 ```
 
-Open [`styles/gallery.html`](styles/gallery.html) to preview every shape and theme. Full
-token reference and how to theme a whole video: [STYLES.md](STYLES.md).
+**When prompting an agent** — just name the keys:
+
+```text
+Make a new inkling scene about <topic> in the `chalk` theme using the `c-cloud` shape.
+```
+```text
+Re-skin the demo — switch every scene to data-theme="riso" with the `c-tall` shape.
+```
+
+Preview them live (animated) in [`styles/gallery.html`](styles/gallery.html) · full token reference in [STYLES.md](STYLES.md).
 
 ## Repo layout
 
