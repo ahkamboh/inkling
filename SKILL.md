@@ -55,3 +55,31 @@ frame-by-frame (deterministic), screenshots, and ffmpeg crossfades the scenes.
 - not a flowchart / slide / dense diagram
 - labels correct and sparse; clean white (or themed) background
 - the loop has no visible seam
+
+## 7. Transitions — native & declarative
+
+Each scene declares the transition used when cutting **to the next scene**, in its `<head>`:
+
+```html
+<meta name="inkling:transition" content="reveal">
+```
+
+`render-reel.js` reads it → `frames/reel/<theme>/transitions.txt` → `build-reel.sh` applies it.
+Use a **friendly name** (mapped to an ffmpeg `xfade` type), or pass a raw xfade name directly:
+
+| name | feel | use it when… | xfade |
+|------|------|--------------|-------|
+| `push` | momentum | the same thread continues / attention moves sideways | `slideleft` |
+| `glide` | smooth continue | gentle progression, same energy | `smoothleft` |
+| `rise` | building up | stacking, growth, "more" | `slideup` |
+| `wipe` | step / next | a checklist or sequence advances | `wiperight` |
+| `reveal` | spotlight | a result, answer or payoff appears | `circleopen` |
+| `burst` | aha / energy | a realization or surprise lands | `radial` |
+| `dissolve` | mood shift | changing topic or tone softly | `dissolve` |
+| `diagonal` | dynamic | high-energy beats (jumps, action) | `diagtl` |
+| `fade` | neutral / end | the final scene or a calm reset | `fade` |
+
+**Rubric for picking (this is how an agent decides):** match the transition to *what happens at the
+cut*, never at random — a result appearing → `reveal`; an idea landing → `burst`; a sequence
+advancing → `wipe`/`rise`; the same subject continuing → `push`/`glide`; a topic change →
+`dissolve`; the last scene → `fade` (its transition is unused — nothing follows it).
