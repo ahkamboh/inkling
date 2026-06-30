@@ -16,6 +16,17 @@ export XF   # render.js reads this to compensate the amplitude index
 
 OUT="out"; mkdir -p "$OUT" examples
 
+# Layout gate — never render a video with overlapping / off-frame elements.
+# lint.js measures the real rendered bounding boxes and fails on any problem.
+# Override with SKIP_LINT=1 if you really want to render anyway.
+if [ "${SKIP_LINT:-0}" != "1" ]; then
+  echo ">> checking layout (lint.js)"
+  if ! node lint.js ${ONLY:+$ONLY}; then
+    echo ">> ✗ layout issues above — fix them, or run with SKIP_LINT=1 to override. Aborting."
+    exit 1
+  fi
+fi
+
 echo ">> rendering frames (puppeteer)"
 node render.js $ONLY
 
