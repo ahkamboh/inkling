@@ -45,11 +45,17 @@ const beatsHint = flag('beats', null);
 
 const slugify = s => (s || 'video').replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '').slice(0, 48).toLowerCase();
 
+// YouTube keeps breaking the default player clients (SABR / 403). This client
+// list falls back through the ones that still serve plain audio URLs. Override
+// with YT_DLP_CLIENT=… if your video needs a different one.
+const YT_CLIENTS = process.env.YT_DLP_CLIENT || 'tvhtml5,web_safari,web,android';
+const YT_EXTRA = ['--extractor-args', `youtube:player_client=${YT_CLIENTS}`];
+
 // ─── 1. Video info ───────────────────────────────────────────────────────────
 console.log('⬇  fetching video info…');
 let info;
 try {
-  info = JSON.parse(execFileSync('yt-dlp', ['--dump-json', '--no-playlist', url]).toString());
+  info = JSON.parse(execFileSync('yt-dlp', ['--dump-json', '--no-playlist', ...YT_EXTRA, url]).toString());
 } catch (e) {
   console.error('yt-dlp failed — is it installed? (brew install yt-dlp)\n', e.message);
   process.exit(1);
@@ -64,16 +70,25 @@ const DIR = path.join(ROOT, 'youtube', slug);
 fs.mkdirSync(DIR, { recursive: true });
 console.log(`   "${title}" — ${uploader} (${Math.round(duration)}s, using first ${Math.round(capDur)}s)`);
 
-// ─── 2. Audio ────────────────────────────────────────────────────────────────
+// ─── 2. Audio (trim to --max so transcribe/amplitude/mix all respect it) ─────
 const audioPath = path.join(DIR, 'audio.mp3');
+const needTrim  = duration && capDur < duration - 1;
 if (fs.existsSync(audioPath)) {
   console.log('✔  audio cached');
 } else {
-  console.log('⬇  downloading audio…');
-  execFileSync('yt-dlp', [
-    '--extract-audio', '--audio-format', 'mp3', '--audio-quality', '5',
-    '-o', path.join(DIR, 'audio.%(ext)s'), '--no-playlist', url,
-  ], { stdio: 'inherit' });
+  const full = path.join(DIR, 'audio.full.mp3');
+  const dlBase = needTrim ? 'audio.full.%(ext)s' : 'audio.%(ext)s';
+  if (!(needTrim && fs.existsSync(full))) {
+    console.log('⬇  downloading audio…');
+    execFileSync('yt-dlp', [
+      '--extract-audio', '--audio-format', 'mp3', '--audio-quality', '5',
+      '-o', path.join(DIR, dlBase), '--no-playlist', ...YT_EXTRA, url,
+    ], { stdio: 'inherit' });
+  }
+  if (needTrim) {
+    console.log(`✂  trimming to first ${Math.round(capDur)}s…`);
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', full, '-t', String(capDur), '-c', 'copy', audioPath]);
+  }
 }
 
 // ─── 3. Transcribe (local Whisper, no API) ───────────────────────────────────
