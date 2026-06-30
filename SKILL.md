@@ -56,6 +56,27 @@ frame-by-frame (deterministic), screenshots, and ffmpeg crossfades the scenes.
 - labels correct and sparse; clean white (or themed) background
 - the loop has no visible seam
 
+### 6a. No overlaps, nothing off-frame — the #1 thing that makes output look bad
+Hand-placed SVG has no layout engine, so labels drift onto objects and elements
+fall off the frame. The two rules that prevent it:
+
+1. **Tell the story with the SHAPE, keep text tiny.** One short label per scene
+   (2–4 words), small; let the mascot's *action* carry the meaning. Fewer, bigger
+   elements = fewer collisions. Never stack two long text lines — they overlap and
+   run off the edge.
+2. **Lint before you render.** `node lint.js` (or `npm run lint`) measures the REAL
+   rendered bounding boxes — every transform and CSS animation applied, sampled
+   across the whole scene — and fails on:
+   - **OFF-FRAME** — an element pushed outside the safe frame (catches the classic
+     "CSS transform replaced the position attribute → mascot snapped to the corner"
+     bug; always animate an *inner* wrapper, never the positioned group).
+   - **TEXT ⨯ TEXT** — two labels overlapping.
+   - **TEXT ⨯ SHAPE** — a label crossing on top of an object (unreadable).
+
+`build.sh` runs the linter automatically and **refuses to render** if anything is
+flagged (override with `SKIP_LINT=1`). So fix what it reports, re-lint until it says
+`✓ all scenes clean`, then render — a bad frame can never reach the video.
+
 ## 7. Transitions — native & declarative
 
 Each scene declares the transition used when cutting **to the next scene**, in its `<head>`:

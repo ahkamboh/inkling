@@ -5,6 +5,7 @@
   "scripts": {
     "render": "node render.js",
     "build": "bash build.sh",
+    "lint": "node lint.js",
     "yt": "node yt.js"
   },
   "keywords": ["explainer", "animation", "svg", "hand-drawn", "video", "ffmpeg", "puppeteer", "motion-graphics"],
