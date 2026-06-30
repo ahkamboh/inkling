@@ -11,7 +11,6 @@
   "author": "Ali Hamza Kamboh (@ahkamboh)",
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^25.0.0",
-    "@anthropic-ai/sdk": "^0.54.0"
+    "puppeteer": "^25.0.0"
   }
 }

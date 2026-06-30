@@ -16,40 +16,55 @@
 
 ## 🎬 YouTube → hand-drawn explainer (new)
 
-Paste any YouTube URL and inkling turns it into an audio-reactive hand-drawn motion graphic — automatically. Claude extracts the key beats, generates scenes in the inkling style, and mixes the original audio back in.
+Turn any YouTube video into an audio-reactive hand-drawn motion graphic — **your AI agent does the thinking, no API key.** inkling stays the same as everything else here: paste a prompt into Claude Code / Cursor / Codex and it works.
 
-```bash
-node yt.js https://www.youtube.com/watch?v=VIDEO_ID
+**Paste this into your agent:**
+
+```text
+Use inkling to turn this YouTube video into a hand-drawn explainer:
+<<PASTE YOUTUBE URL>>
+
+1. Run:  node yt.js <<URL>>          (downloads audio, transcribes, extracts amplitude)
+2. Read youtube/<slug>/brief.md — it has the transcript, title, channel and your hints.
+   It also prints the exact slug + commands for steps 4-6.
+3. Clear the shipped demo scenes:  rm -f scenes/scene*.html
+4. Author the scenes yourself (scenes/scene1.html, scene2.html, … numbered from 1) per
+   SKILL.md — one idea per scene, mascot performs the idea, pick a theme that fits.
+   Drive the audio-reactive pulse from var(--beat, 0) in any transform. (Clean cuts keep
+   the pulse in sync with the audio — no transition meta needed here.)
+5. Render with audio reacting:
+      OUT_NAME=yt-<slug>.silent AMP_FILE=youtube/<slug>/amp.json bash build.sh
+6. Mix the original audio in:    bash mix.sh <slug>
+   → examples/yt-<slug>.mp4
 ```
 
-**Options:**
+**Why no API key?** The agent you're already in *is* the brain — it reads the transcript and authors the scenes, the same way it authors any other inkling scene. `yt.js` only does the mechanical, deterministic parts.
+
+**`yt.js` does (and only does):**
+1. `yt-dlp` downloads the audio track
+2. local **Whisper** transcribes it → `transcript.txt`
+3. `amp.py` extracts per-frame RMS amplitude → `amp.json`
+4. writes a `brief.md` telling the agent exactly what to do next
+
+Then the agent authors the scenes, renders with `AMP_FILE=…` (which injects the live audio amplitude as a `--beat` CSS variable on `:root` every frame), and `mix.sh` muxes the original audio back in.
+
+**Options** (hints written into the brief for the agent to honour):
 
 | Flag | Default | What it does |
 |------|---------|--------------|
-| `--max <secs>` | 300 | Cap source video at N seconds |
-| `--theme <name>` | neon | Force a theme (ink/chalk/neon/…) |
-| `--shape <name>` | c-bean | Force mascot shape |
-| `--beats <n>` | auto | Force number of scenes |
+| `--max <secs>` | 300 | Only use the first N seconds of the video |
+| `--theme <name>` | agent picks | Suggest a theme (ink/chalk/neon/…) |
+| `--shape <name>` | agent picks | Suggest a mascot shape |
+| `--beats <n>` | auto | Suggest number of scenes |
 
-**What happens:**
-1. `yt-dlp` downloads the audio track
-2. Whisper transcribes it
-3. Claude (Haiku) extracts 4–8 key beats as structured JSON
-4. Inkling generates a title card + concept scenes in the chosen theme
-5. `amp.py` extracts per-frame RMS amplitude → injects `--beat` CSS variable each frame
-6. The mascot's pulse ring reacts to the audio in every scene
-7. ffmpeg mixes the original audio back into the final MP4
-
-**Requires:** `yt-dlp`, `ffmpeg`, `python3`, `ANTHROPIC_API_KEY`
+**Requires:** `yt-dlp` (`pip install -U yt-dlp` or `brew install yt-dlp`), `ffmpeg`, `python3` (`pip install -U openai-whisper`). **No API key. No paid model.**
 
 ```bash
-npm install                     # first time only
-export ANTHROPIC_API_KEY=sk-…
-node yt.js https://youtu.be/…
-# → examples/yt-<title>.mp4
+npm install                                   # first time only (Puppeteer)
+node yt.js https://youtu.be/VIDEO_ID          # prep — then let your agent author + render
 ```
 
-The `--beat` CSS variable is injected into every scene's `:root` each frame, so your own scenes can use it too — just write `calc(1 + var(--beat, 0) * 0.4)` in any transform.
+The `--beat` CSS variable (0→1, the live audio amplitude) is injected into every scene's `:root` each frame, so any scene can react to the audio — just write `calc(1 + var(--beat, 0) * 0.4)` in a transform.
 
 ---
 

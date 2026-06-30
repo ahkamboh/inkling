@@ -1,6 +1,8 @@
 node_modules/
 frames/
 out/
+youtube/
+examples/yt-*
 styles/gallery.png
 styles/gallery_view.png
 *.log
