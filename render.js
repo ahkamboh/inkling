@@ -46,6 +46,7 @@ if (process.env.AMP_FILE && fs.existsSync(process.env.AMP_FILE)) {
     const n = file.match(/\d+/)[0];
     const url = 'file://' + path.join(sceneDir, file);
     await page.goto(url, { waitUntil: 'networkidle0' });
+    await page.evaluate(() => document.fonts.ready); // ensure web fonts are applied before capture
     const el = await page.$('svg.sc');
     const outdir = path.resolve(__dirname, 'frames', 's' + n);
     fs.rmSync(outdir, { recursive: true, force: true });
