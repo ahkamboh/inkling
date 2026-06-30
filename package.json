@@ -4,12 +4,14 @@
   "description": "Code-driven hand-drawn animated explainer videos with a themeable mascot — no AI image or video model.",
   "scripts": {
     "render": "node render.js",
-    "build": "bash build.sh"
+    "build": "bash build.sh",
+    "yt": "node yt.js"
   },
   "keywords": ["explainer", "animation", "svg", "hand-drawn", "video", "ffmpeg", "puppeteer", "motion-graphics"],
   "author": "Ali Hamza Kamboh (@ahkamboh)",
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^25.0.0"
+    "puppeteer": "^25.0.0",
+    "@anthropic-ai/sdk": "^0.54.0"
   }
 }
