@@ -63,25 +63,35 @@ async function measure(page, t) {
 async function lintScene(page, file) {
   await page.goto('file://' + path.resolve(file), { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.fonts.ready);
-  const issues = new Map();
-  for (const t of SAMPLES) {
-    const { out, W, H } = await measure(page, t);
+  // Count each issue across samples and note if it's present at the SETTLED frame.
+  // Motion is allowed: an element may be off-frame / overlapping briefly while it
+  // enters or acts. We only flag problems that are there when the scene RESTS
+  // (last sample) or that PERSIST (≥60% of samples) — those are real bugs.
+  const seen = new Map();
+  const bump = (key, msg, isLast) => {
+    const e = seen.get(key) || { msg, count: 0, inLast: false };
+    e.count++; if (isLast) e.inLast = true; e.msg = msg; seen.set(key, e);
+  };
+  for (let si = 0; si < SAMPLES.length; si++) {
+    const isLast = si === SAMPLES.length - 1;
+    const { out, W, H } = await measure(page, SAMPLES[si]);
     for (const e of out) {
       if (e.bb.x < MARGIN - TOL || e.bb.y < MARGIN - TOL ||
           e.bb.x + e.bb.w > W - MARGIN + TOL || e.bb.y + e.bb.h > H - MARGIN + TOL)
-        issues.set('oof:' + e.label, `OFF-FRAME   ${e.label}`);
+        bump('oof:' + e.label, `OFF-FRAME   ${e.label}`, isLast);
     }
     const texts = out.filter(e => e.isText), solids = out.filter(e => e.isSolid);
     for (let i = 0; i < texts.length; i++)
       for (let j = i + 1; j < texts.length; j++)
         if (intersect(texts[i].bb, texts[j].bb, TOL))
-          issues.set('tt:' + texts[i].label + texts[j].label, `TEXT ⨯ TEXT  ${texts[i].label}  ×  ${texts[j].label}`);
+          bump('tt:' + texts[i].label + texts[j].label, `TEXT ⨯ TEXT  ${texts[i].label}  ×  ${texts[j].label}`, isLast);
     for (const t2 of texts)
       for (const s of solids)
         if (intersect(t2.bb, s.bb, TOL) && !contains(s.bb, t2.bb))
-          issues.set('ts:' + t2.label + s.label, `TEXT ⨯ SHAPE  ${t2.label}  on  ${s.label}`);
+          bump('ts:' + t2.label + s.label, `TEXT ⨯ SHAPE  ${t2.label}  on  ${s.label}`, isLast);
   }
-  return [...issues.values()];
+  const persist = Math.ceil(SAMPLES.length * 0.6);
+  return [...seen.values()].filter(e => e.inLast || e.count >= persist).map(e => e.msg);
 }
 
 (async () => {
