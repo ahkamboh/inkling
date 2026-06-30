@@ -16,6 +16,12 @@
 
 ## 🎬 YouTube → hand-drawn explainer (new)
 
+<p align="center">
+  <img src="examples/youtube-to-inkling.gif" width="100%" alt="a 20-minute YouTube talk, side by side with the 45-second hand-drawn inkling explainer it was turned into" />
+  <br>
+  <sub>left: a 20-min <a href="https://www.youtube.com/watch?v=20p5-kQXF_Q">Dwarkesh Patel talk</a> · right: the 45-second inkling explainer it became (same audio, in sync) · <a href="examples/youtube-to-inkling.mp4">▶ watch the mp4</a></sub>
+</p>
+
 Turn any YouTube video into an audio-reactive hand-drawn motion graphic — **your AI agent does the thinking, no API key.** inkling stays the same as everything else here: paste a prompt into Claude Code / Cursor / Codex and it works.
 
 **Paste this into your agent:**
