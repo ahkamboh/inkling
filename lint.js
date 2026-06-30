@@ -78,7 +78,7 @@ async function lintScene(page, file) {
     for (const e of out) {
       if (e.bb.x < MARGIN - TOL || e.bb.y < MARGIN - TOL ||
           e.bb.x + e.bb.w > W - MARGIN + TOL || e.bb.y + e.bb.h > H - MARGIN + TOL)
-        bump('oof:' + e.label, `OFF-FRAME   ${e.label}`, isLast);
+        bump('oof:' + e.label, `OFF-FRAME   ${e.label}  @ [${e.bb.x | 0},${e.bb.y | 0} → ${(e.bb.x + e.bb.w) | 0},${(e.bb.y + e.bb.h) | 0}]`, isLast);
     }
     const texts = out.filter(e => e.isText), solids = out.filter(e => e.isSolid);
     for (let i = 0; i < texts.length; i++)
