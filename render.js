@@ -33,8 +33,15 @@ if (process.env.AMP_FILE && fs.existsSync(process.env.AMP_FILE)) {
   const page = await browser.newPage();
   await page.setViewport({ width: W, height: 1200, deviceScaleFactor: 1 });
 
-  let globalFrame = 0; // cumulative frame index across all scenes for amplitude lookup
+  // Crossfade compensation: when build.sh stitches with an xfade of XF seconds,
+  // each scene's content lands at video-time sIdx*(SDUR-XF) + f/FPS (the overlap
+  // shortens the timeline). The audio mix plays from t=0, so to keep the baked
+  // --beat in sync with the audio we look it up at THAT video-time, not at the
+  // naive cumulative frame. XF=0 (hard cuts) reduces to the plain cumulative index.
+  const SDUR = DUR / 1000;                       // seconds per scene
+  const XF = parseFloat(process.env.XF || '0');  // crossfade seconds (from build.sh)
 
+  let sIdx = 0;
   for (const file of list) {
     const n = file.match(/\d+/)[0];
     const url = 'file://' + path.join(sceneDir, file);
@@ -44,6 +51,7 @@ if (process.env.AMP_FILE && fs.existsSync(process.env.AMP_FILE)) {
     fs.rmSync(outdir, { recursive: true, force: true });
     fs.mkdirSync(outdir, { recursive: true });
     const frames = Math.round(DUR / 1000 * FPS);
+    const base = Math.round(sIdx * (SDUR - XF) * FPS); // amplitude index at this scene's start
     for (let f = 0; f < frames; f++) {
       const t = f * (1000 / FPS);
       await page.evaluate((t) => {
@@ -51,15 +59,15 @@ if (process.env.AMP_FILE && fs.existsSync(process.env.AMP_FILE)) {
       }, t);
       // Inject audio amplitude as --beat CSS custom property on :root
       if (ampData) {
-        const beat = ampData[globalFrame] ?? 0;
+        const beat = ampData[base + f] ?? 0;
         await page.evaluate((v) => {
           document.documentElement.style.setProperty('--beat', String(v));
         }, beat);
       }
       await el.screenshot({ path: path.join(outdir, String(f).padStart(4, '0') + '.png') });
-      globalFrame++;
     }
     console.log('scene', n, 'done —', frames, 'frames');
+    sIdx++;
   }
   await browser.close();
 })();
