@@ -47,6 +47,50 @@ if (process.env.AMP_FILE && fs.existsSync(process.env.AMP_FILE)) {
     const url = 'file://' + path.join(sceneDir, file);
     await page.goto(url, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready); // ensure web fonts are applied before capture
+
+    // Auto-centre the composition vertically (set NO_CENTER=1 to disable). Measures
+    // the RESTING content at the hold frame, computes one constant vertical shift that
+    // gives equal top/bottom margins, and wraps the content so every frame is centred.
+    if (process.env.NO_CENTER !== '1') {
+      const delta = await page.evaluate((holdMs) => {
+        document.getAnimations().forEach(a => { a.pause(); a.currentTime = holdMs; });
+        const svg = document.querySelector('svg.sc');
+        const sr = svg.getBoundingClientRect();
+        const vb = svg.getAttribute('viewBox').split(/\s+/).map(Number);
+        const H = vb[3], sy = H / sr.height;
+        let ymin = 1e9, ymax = -1e9;
+        svg.querySelectorAll('text,rect,circle,ellipse,path,line,polygon,image').forEach(el => {
+          if (el.closest('defs')) return;
+          const cs = getComputedStyle(el);
+          if (cs.display === 'none' || cs.visibility === 'hidden') return;
+          let op = parseFloat(cs.opacity || '1'), a = el.parentElement;
+          while (a && a !== svg) { op *= parseFloat(getComputedStyle(a).opacity || '1'); a = a.parentElement; }
+          if (op < 0.2) return;                                   // ignore fading-out props
+          const r = el.getBoundingClientRect();
+          if (r.width < 1 || r.height < 1) return;
+          const y = (r.top - sr.top) * sy, h = r.height * sy;
+          if (y <= H * 0.02 && y + h >= H * 0.98) return;          // skip the full-frame background
+          ymin = Math.min(ymin, y); ymax = Math.max(ymax, y + h);
+        });
+        if (ymin > ymax) return 0;
+        let d = (H - ymin - ymax) / 2;                            // centre the content band
+        d = Math.max(d, 14 - ymin);                               // keep ≥14u top margin
+        d = Math.min(d, (H - 14) - ymax);                         // keep ≥14u bottom margin
+        return Math.round(d);
+      }, DUR);
+      if (delta) {
+        await page.evaluate((d) => {
+          const svg = document.querySelector('svg.sc');
+          const bg = svg.querySelector('rect');                   // full-frame background, stays put
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.setAttribute('transform', `translate(0,${d})`);
+          let nx = bg.nextSibling;
+          while (nx) { const after = nx.nextSibling; g.appendChild(nx); nx = after; }
+          svg.appendChild(g);
+        }, delta);
+      }
+    }
+
     const el = await page.$('svg.sc');
     const outdir = path.resolve(__dirname, 'frames', 's' + n);
     fs.rmSync(outdir, { recursive: true, force: true });
